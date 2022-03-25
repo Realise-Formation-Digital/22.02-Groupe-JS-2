@@ -1,3 +1,5 @@
+/* Index.html */
+
 * {
     font-family: 'Texturina', serif;
 }
@@ -8,7 +10,7 @@ hr {
 }
 
 #background {
-    background-image: url(background.webp);
+    background-image: url(/img/background.webp);
     background-repeat: no-repeat;
     object-fit: cover;
     height: 100vh;

@@ -1,0 +1,13 @@
+/* Start.html */
+
+* {
+    font-family: 'Texturina', serif;
+}
+
+#background1 {
+    background-image: url(img/pillars\ of\ eternity.jpg);
+}
+
+#main {
+    height: 88vh;
+}
