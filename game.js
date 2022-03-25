@@ -1,18 +1,18 @@
 class Hero {
 
-    _name 
-    _hp
-    _exp 
-    _str 
-    _end 
-    _inv
-    _gold
+    _name = "";
+    _hp = 0;
+    _exp = 0;
+    _dam = 0;
+    _end = 0;
+    _inv = [];
+    _gold = 0;
 
     constructor() {
         this._name = "Heroe";
         this._hp = 10;
         this._exp = 0;
-        this._str = 1;
+        this._dam = 1;
         this._end = 1;
         this._inv = [];
         this._gold = 20;
@@ -27,11 +27,11 @@ class Hero {
     }
 
     get Strenght() {
-        return this._str;
+        return this._dam;
     }
 
     set Strenght(value) {
-        this._str = value;
+        this._dam = value;
     }
 
     get Endurance() {
@@ -60,6 +60,7 @@ class Hero {
 }
 
 let Geralt = new Hero();
+Geralt._exp = 30;
 console.log(Geralt);
 
 class Weapon {
@@ -79,16 +80,21 @@ class Weapon {
         "Hammer",
         "Kanabo"
     ];
-    _dam
-    _gold
-    _end
-    _exp
+    _dam = 0;
+    _gold = 0;
+    _end = 0;
 
     constructor () {
+
         this._name = this._name[Math.floor(Math.random() * this._name.length)];
-        this.Proto();
+        this._gold = Math.floor(Math.random() * 129) + 1;
+        this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
+        this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
+        this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
+        //this.Proto();
     }
 
+    /*
     Proto() {
         if(this._name == "Sword") {
             this._dam = 1;
@@ -141,7 +147,7 @@ class Weapon {
         if(this._name == "Katana") {
             this._dam = 5;
             this._gold = 80;
-            this._end = 12;
+            this._end = 2;
             this._exp = 7;
         }
         if(this._name == "Nodachi") {
@@ -169,7 +175,7 @@ class Weapon {
             this._exp = 11;
         }
         return this._dam, this._gold, this._end, this._exp;
-    }
+    }*/
 }
 
 let arme = new Weapon();
@@ -196,18 +202,42 @@ class Monster {
         "Golem",
         "Succubus"
     ]
-    _dam
-    _gold
-    _end
-    _exp
+    _dam = 0;
+    _gold = 0;
+    _end = 0;
+    _exp = 0;
+    _inv = [];
 
     constructor() {
         this._name = this._name[Math.floor(Math.random() * this._name.length)];
-        this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
-        this._gold = Geralt._exp + 1 * [Math.floor(Math.random() * 49) + 1];
-        this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
-        this._exp = 1;
-        this._inv = [new Weapon()];
+        this._gold = Math.floor(Math.random() * 49) + 1;
+        this._exp = 1; 
+        this._inv.push(this.Bool());
+        this.FairPlay();
+    }
+
+    FairPlay() {
+        let inside = 10
+        let outside = Math.floor(Math.random() * 19)+ 1;
+        if (outside >= inside && Geralt._exp <= 5) {
+            this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * -3) - 1];
+            this._end = Geralt._exp + 1 * [Math.floor(Math.random() * -3) -1];
+        } else {
+            this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
+            this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
+        }
+        return this._dam, this._end;
+    }
+    
+    Bool() { 
+        let number = 10
+        let number1 = Math.floor(Math.random() * 19)+ 1;
+        if ( number1 >= number) {
+            new Weapon()
+        }else {
+            this._inv = [];
+        }
+        return new Weapon();
     }
 }
 
@@ -223,8 +253,8 @@ class Merchant {
         "Loki",
         "Dante"
     ]
-    _exp
-    _inv
+    _exp = 0;
+    _inv = [];
 
     constructor() {
         this._name = this._name[Math.floor(Math.random() * this._name.length)];
