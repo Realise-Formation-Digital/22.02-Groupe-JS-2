@@ -216,6 +216,7 @@ class Monster {
         this.FairPlay();
     }
 
+    //A travailler le curbe de difiltucte
     FairPlay() {
         let inside = 10
         let outside = Math.floor(Math.random() * 19)+ 1;
