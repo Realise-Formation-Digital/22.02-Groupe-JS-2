@@ -1,0 +1,21 @@
+/* Index.html */
+
+* {
+    font-family: 'Texturina', serif;
+}
+
+hr {
+    border: thin solid black !important;
+    color: black !important;
+}
+
+#background {
+    background-image: url(/img/background.webp);
+    background-repeat: no-repeat;
+    object-fit: cover;
+    height: 100vh;
+}
+
+#center {
+    height: 75vh;
+}
