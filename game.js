@@ -1,2 +1,2 @@
-import Arme  from "./arme.js"
+import Arme from "./arme.js"
 

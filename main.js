@@ -19,4 +19,5 @@ console.log(enemie);
 let vendor = new Merchant(Geralt);
 console.log(vendor);
 
-let armeBachir= new Arme()
+let armemerchant= new Arme()
+console.log(armemerchant)
