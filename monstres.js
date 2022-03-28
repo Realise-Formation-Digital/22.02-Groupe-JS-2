@@ -185,6 +185,7 @@ console.log(arme2);
 class Monster {
 
     _name = 
+    // Object.name
     // [
     //     "Balrog",
     //     "Orc",
@@ -205,10 +206,9 @@ class Monster {
 
 [
 {
-    name: "Bolrog",
+    name: "Balrog",
     img: "image/combat/balrog.jpg"
-},
-{
+},{
     name: "Bandit",
     img: "image/combat/bandit.jpg"
 },{
@@ -245,7 +245,7 @@ class Monster {
     name: "Wyrm",
     img: "image/combat/wyrm.jpg"
 }
-]
+] 
     _dam = 0;
     _gold = 0;
     _end = 0;
@@ -304,7 +304,7 @@ afas.addEventListener("click", () => {
         Geralt._gold = Geralt._gold + sbir._gold;
         sbir._gold = 0;
         delete sbir
-        alerte = "ta gagné"
+        alerte = "Tu as gagné"
     } else{
 
         if (sbir._dam < Geralt._end){
@@ -340,10 +340,10 @@ function essai() {
 
 function changeImage() {
     var v = document.body.background;
-    if (v.indexOf("img/combat/berserker.jpg") != -1)
-        v = "img/combat/succube.jpg";
-    else
+    if (v.indexOf("img/landscape.jpg") != -1)
         v = "img/combat/berserker.jpg";
+    else
+        v = "img/landscape.jpg";
 
     var z = new Image();
     z.src = v;
@@ -351,7 +351,7 @@ function changeImage() {
 }
 function setImage() {
     var z = new Image();
-    z.src = "img/combat/vampire.jpg";
+    z.src = "img/landscape.jpg";
     document.body.background = z.src;
 }
 window.onload = setImage;
