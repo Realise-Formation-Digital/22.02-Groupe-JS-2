@@ -1,21 +1,40 @@
-/* Index.html */
 
-* {
-    font-family: 'Texturina', serif;
-}
-
-hr {
-    border: thin solid black !important;
-    color: black !important;
-}
-
-#background {
-    background-image: url(/img/background.webp);
-    background-repeat: no-repeat;
-    object-fit: cover;
-    height: 100vh;
-}
 
 #center {
     height: 75vh;
+}
+
+* {
+    /* box-sizing: border-box; */
+    font-family: 'Texturina', serif;
+}
+
+/* hr {
+    border: 2px solid black !important;
+}
+    border: thin solid black !important;
+    color: black !important;
+} */
+
+#background {
+    /* background-image: url(img/image-paysage-fantasy-3-2.jpg); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+#center {
+    height: 75vh;
+}
+
+.menu-bg {
+    border: 3px solid black;
+    background-image: url(img/livre.png);
+    background-size: cover;
+    padding: 5px;
+
+}
+
+.menu-espace {
+    justify-content: space-between;
 }
