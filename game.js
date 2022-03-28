@@ -180,22 +180,65 @@ console.log(arme2);
 
 class Monster {
 
-    _name = [
-        "Bolrog",
-        "Orc",
-        "minion",
-        "Wyvern",
-        "Kobold",
-        "Lich",
-        "Berserker",
-        "Cacodemon",
-        "Bandit",
-        "ghoul",
-        "Vampire",
-        "Banshee",
-        "Golem",
-        "Succubus"
-    ]
+    _name = 
+    // [
+    //     "Balrog",
+    //     "Orc",
+    //     "minion",
+    //     "Wyvern",
+    //     "Kobold",
+    //     "Lich",
+    //     "Berserker",
+    //     "Cacodemon",
+    //     "Bandit",
+    //     "ghoul",
+    //     "Vampire",
+    //     "Banshee",
+    //     "Golem",
+    //     "Succubus"
+    // ]
+
+[{
+    name: "Balrog",
+    img: "image/combat/balrog.jpg"
+},
+{
+    name: "Bandit",
+    img: "image/combat/bandit.jpg"
+},{
+    name: "Berserker",
+    img: "image/combat/berserker.jpg"
+},{
+    name: "Cacodemon",
+    img: "image/combat/cacodemon.jpg"
+},{
+    name: "Ghoul",
+    img: "image/combat/ghoul.jpg"
+},{
+    name: "Golem",
+    img: "image/combat/golem.jpg"
+},{
+    name: "Kobold",
+    img: "image/combat/kobold.jpg"
+},{
+    name: "lich",
+    img: "image/combat/lich.jpg"
+},{
+    name: "Minion",
+    img: "image/combat/minion.jpg"
+},{
+    name: "Orc",
+    img: "image/combat/orc.jpg"
+},{
+    name: "Succubus",
+    img: "image/combat/succube.jpg"
+},{
+    name: "Vampire",
+    img: "image/combat/vampire.jpg"
+},{
+    name: "Wyrm",
+    img: "image/combat/wyrm.jpg"
+}]
     _dam
     _gold
     _end
@@ -220,7 +263,7 @@ class Merchant {
         "Harry",
         "Fenrir",
         "Odin",
-        "Loki",
+        "Madeleine",
         "Dante"
     ]
     _exp

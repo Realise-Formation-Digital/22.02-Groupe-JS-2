@@ -1,5 +1,5 @@
 
-// *****************Affichage stats ennemi*********************
+// *****************Affichage block stats ennemi*********************
 
 function essai() {
     var statennemi = document.getElementById('menuEnnemi');
@@ -15,8 +15,8 @@ function essai() {
 
 function changeImage() {
     var v = document.body.background;
-    if (v.indexOf("img/image-paysage-fantasy-3-2.jpg") != -1)
-        v = "img/combat/wyrm.jpg";
+    if (v.indexOf("img/combat/berserker.jpg") != -1)
+        v = "img/combat/succube.jpg";
     else
         v = "img/combat/berserker.jpg";
 
@@ -26,7 +26,7 @@ function changeImage() {
 }
 function setImage() {
     var z = new Image();
-    z.src = "img/image-paysage-fantasy-3-2.jpg";
+    z.src = "img/combat/vampire.jpg";
     document.body.background = z.src;
 }
 window.onload = setImage;
@@ -36,9 +36,9 @@ window.onload = setImage;
 
 
 
-tbimage = new Array('images/combat/balrog.jpg', 'images/combat/bandit.jpg', 'images/combat/berserker.jpg', 'images/combat/cacodemon.jpg', 'images/combat/ghoul.jpg'
-    , 'images/combat/golem.jpg', 'images/combat/kobold.jpg', 'images/combat/lich.jpg', 'images/combat/minion.jpg', 'images/combat/orc.jpg',
-    'images/combat/succube.jpg', 'images/combat/vampire.jpg', 'images/combat/wyrm.jpg')
+tbimage = new Array('img/combat/balrog.jpg', 'img/combat/bandit.jpg', 'img/combat/berserker.jpg', 'img/combat/cacodemon.jpg', 'img/combat/ghoul.jpg'
+    , 'img/combat/golem.jpg', 'img/combat/kobold.jpg', 'img/combat/lich.jpg', 'img/combat/minion.jpg', 'img/combat/orc.jpg',
+    'img/combat/succube.jpg', 'img/combat/vampire.jpg', 'img/combat/wyrm.jpg')
 
 function pouic() {
     document.body.style.cssText = 'background:url(' + tbimage[Math.round(Math.random() * (tbimage.length - 1))] + ')'
@@ -55,7 +55,7 @@ Object.name;
     img: "image/combat/bandit.jpg"
 },{
     name: "Berserker",
-    img: "image/combat/bersrker.jpg"
+    img: "image/combat/berserker.jpg"
 },{
     name: "Cacodemon",
     img: "image/combat/cacodemon.jpg"
