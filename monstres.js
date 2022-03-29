@@ -185,7 +185,7 @@ console.log(arme2);
 class Monster {
 
     _name = 
-    // Object.name
+    // Ca va ouuuuuuu? -----------------------------------Object.name-------------????????????
     // [
     //     "Balrog",
     //     "Orc",
@@ -207,43 +207,43 @@ class Monster {
 [
 {
     name: "Balrog",
-    img: "image/combat/balrog.jpg"
+    img: "img/combat/balrog.jpg"
 },{
     name: "Bandit",
-    img: "image/combat/bandit.jpg"
+    img: "img/combat/bandit.jpg"
 },{
     name: "Berserker",
-    img: "image/combat/berserker.jpg"
+    img: "img/combat/berserker.jpg"
 },{
     name: "Cacodemon",
-    img: "image/combat/cacodemon.jpg"
+    img: "img/combat/cacodemon.jpg"
 },{
     name: "Ghoul",
-    img: "image/combat/ghoul.jpg"
+    img: "img/combat/ghoul.jpg"
 },{
     name: "Golem",
-    img: "image/combat/golem.jpg"
+    img: "img/combat/golem.jpg"
 },{
     name: "Kobold",
-    img: "image/combat/kobold.jpg"
+    img: "img/combat/kobold.jpg"
 },{
     name: "lich",
-    img: "image/combat/lich.jpg"
+    img: "img/combat/lich.jpg"
 },{
     name: "Minion",
-    img: "image/combat/minion.jpg"
+    img: "img/combat/minion.jpg"
 },{
     name: "Orc",
-    img: "image/combat/orc.jpg"
+    img: "img/combat/orc.jpg"
 },{
     name: "Succubus",
-    img: "image/combat/succube.jpg"
+    img: "img/combat/succube.jpg"
 },{
     name: "Vampire",
-    img: "image/combat/vampire.jpg"
+    img: "img/combat/vampire.jpg"
 },{
     name: "Wyrm",
-    img: "image/combat/wyrm.jpg"
+    img: "img/combat/wyrm.jpg"
 }
 ] 
     _dam = 0;
@@ -298,7 +298,8 @@ console.log(prof)
 afas.addEventListener("click", () => {
 
     let alerte = "";
-
+    console.log(sbir._name.img)
+    changeImage(sbir._name.img)
     if (Geralt._dam >= sbir._end) {
         Geralt._inv.push(sbir._inv.pop())
         Geralt._gold = Geralt._gold + sbir._gold;
@@ -320,34 +321,33 @@ afas.addEventListener("click", () => {
 
     
     console.log(alerte, sbir);
+    return alerte;
  });
 
+
+//  **************************Fuite********************************
+
+// function fuite () {
+
+// }
 
 
 // *****************Affichage block stats ennemi*********************
 
-function essai() {
-    var statennemi = document.getElementById('menuEnnemi');
-    if (statennemi.style.display === 'block') {
-        statennemi.style.display = 'none';
+function Bcombat() {
+    let statennemi = document.getElementById('menuEnnemi');
+    if (statennemi.style.display === 'none') {
+        statennemi.style.display = 'block';
     } else {
         statennemi.style.display = 'block';
     }
 }
 
-// ********************Changement de fond d'ecran selon situation***************
+// **************** Changement de fond d'ecran selon personnage rencontré ***************
 
 
-function changeImage() {
-    var v = document.body.background;
-    if (v.indexOf("img/landscape.jpg") != -1)
-        v = "img/combat/berserker.jpg";
-    else
-        v = "img/landscape.jpg";
-
-    var z = new Image();
-    z.src = v;
-    document.body.background = z.src;
+function changeImage(imgPath) {
+    document.body.background = imgPath;
 }
 function setImage() {
     var z = new Image();
@@ -355,5 +355,12 @@ function setImage() {
     document.body.background = z.src;
 }
 window.onload = setImage;
+
+
+// *******************Affichage du résultat du combat*************************
+
+
+
+// ***********************Quitter le résultat du combat et revenir à l'écran principal*****************
 
 
