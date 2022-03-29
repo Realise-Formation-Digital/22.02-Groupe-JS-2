@@ -1,268 +1,237 @@
-class Hero {
+import { Weapon } from "./js/weapon.js";  
+import { Hero } from "./js/hero.js";
+import { Monster } from "./js/monstre.js";
+import { Merchant } from "./js/merchant.js";
+    
+// variables
+let Geralt = new Hero("Heroe");
+let sword = new Weapon("Sword", 1, 15, 0, 0, 0);
+Geralt.setInv(sword);
+Geralt.setDamage(sword.getDamage());
 
-    _name = "";
-    _hp = 0;
-    _exp = 0;
-    _dam = 0;
-    _end = 0;
-    _inv = [];
-    _gold = 0;
-
-    constructor() {
-        this._name = "Heroe";
-        this._hp = 10;
-        this._exp = 0;
-        this._dam = 1;
-        this._end = 1;
-        this._inv = [];
-        this._gold = 20;
-    }
-
-    get Exp() {
-        return this._exp;
-    }
-
-    set Exp(value) {
-        this._exp = this._exp + value;
-    }
-
-    get Strenght() {
-        return this._dam;
-    }
-
-    set Strenght(value) {
-        this._dam = value;
-    }
-
-    get Endurance() {
-        return this._end;
-    }
-
-    set Endurance(value) {
-        this._end = value;
-    }
-
-    get Inventory() {
-        return this._inv;
-    }
-
-    set Inventory(value) {
-        this._inv = value;
-    }
-
-    get Dollars() {
-        return this._gold;
-    }
-
-    set Dollars(value) {
-        this._gold = value;
-    }
-}
-
-let Geralt = new Hero();
-Geralt._exp = 30;
 console.log(Geralt);
 
-class Weapon {
-
-    _name = [
-        "Sword",
-        "Dagger",
-        "Kukri",
-        "Longsword",
-        "Spear",
-        "Axe",
-        "Rapier",
-        "Estoc",
-        "Katana",
-        "Nodachi",
-        "Greatsword",
-        "Hammer",
-        "Kanabo"
-    ];
-    _dam = 0;
-    _gold = 0;
-    _end = 0;
-
-    constructor () {
-
-        this._name = this._name[Math.floor(Math.random() * this._name.length)];
-        this._gold = Math.floor(Math.random() * 129) + 1;
-        this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
-        this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
-        this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
-        //this.Proto();
-    }
-
-    /*
-    Proto() {
-        if(this._name == "Sword") {
-            this._dam = 1;
-            this._gold = 10;
-            this._end = 0;
-            this._exp = 0;
-        }
-        if(this._name == "Dagger") {
-            this._dam = 0;
-            this._gold = 20;
-            this._end = 2;
-            this._exp = 1;
-        }
-        if(this._name == "Kukri") {
-            this._dam = 1;
-            this._gold = 25;
-            this._end = 1;
-            this._exp = 2;
-        }
-        if(this._name == "Longsword") {
-            this._dam = 2;
-            this._gold = 35;
-            this._end = 1;
-            this._exp = 3;
-        }
-        if(this._name == "Spear") {
-            this._dam = 1;
-            this._gold = 35;
-            this._end = 2;
-            this._exp = 3;
-        }
-        if(this._name == "Axe") {
-            this._dam = 3;
-            this._gold = 40;
-            this._end = 1;
-            this._exp = 4; 
-        }
-        if(this._name == "Rapier") {
-            this._dam = 3;
-            this._gold = 50;
-            this._end = 2;
-            this._exp = 5;
-        }
-        if(this._name == "Estoc") {
-            this._dam = 4;
-            this._gold = 65;
-            this._end = 2;
-            this._exp = 6;
-        }
-        if(this._name == "Katana") {
-            this._dam = 5;
-            this._gold = 80;
-            this._end = 2;
-            this._exp = 7;
-        }
-        if(this._name == "Nodachi") {
-            this._dam = 8;
-            this._gold = 110;
-            this._end = 0;
-            this._exp = 8;
-        }
-        if(this._name == "Greatsword") {
-            this._dam = 6;
-            this._gold = 130;
-            this._end = 3;
-            this._exp = 9;
-        }
-        if(this._name == "Hammer") {
-            this._dam = 5;
-            this._gold = 135;
-            this._end = 5;
-            this._exp = 10;
-        }
-        if(this._name == "Kanabo") {
-            this._dam = 7;
-            this._gold = 150;
-            this._end = 4;
-            this._exp = 11;
-        }
-        return this._dam, this._gold, this._end, this._exp;
-    }*/
-}
-
-let arme = new Weapon();
-let arme2 = new Weapon();
-
-console.log(arme);
-console.log(arme2);
-
-class Monster {
-
-    _name = [
-        "Bolrog",
-        "Orc",
-        "minion",
-        "Wyvern",
-        "Kobold",
-        "Lich",
-        "Berserker",
-        "Cacodemon",
-        "Bandit",
-        "ghoul",
-        "Vampire",
-        "Banshee",
-        "Golem",
-        "Succubus"
-    ]
-    _dam = 0;
-    _gold = 0;
-    _end = 0;
-    _exp = 0;
-    _inv = [];
-
-    constructor() {
-        this._name = this._name[Math.floor(Math.random() * this._name.length)];
-        this._gold = Math.floor(Math.random() * 49) + 1;
-        this._exp = 1; 
-        this._inv.push(this.Bool());
-        this.FairPlay();
-    }
-
-    //A travailler le curbe de difiltucte
-    FairPlay() {
-        let inside = 10
-        let outside = Math.floor(Math.random() * 19)+ 1;
-        if (outside >= inside && Geralt._exp <= 5) {
-            this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * -3) - 1];
-            this._end = Geralt._exp + 1 * [Math.floor(Math.random() * -3) -1];
-        } else {
-            this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
-            this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
-        }
-        return this._dam, this._end;
-    }
-    
-    Bool() { 
-        let number = 10
-        let number1 = Math.floor(Math.random() * 19)+ 1;
-        if ( number1 >= number) {
-            new Weapon()
-        }else {
-            this._inv = [];
-        }
-        return new Weapon();
-    }
-}
-
-let enemie = new Monster();
-console.log(enemie);
-
-class Merchant {
-
-    _name = [
-        "Harry",
-        "Fenrir",
-        "Odin",
-        "Loki",
-        "Dante"
-    ]
-    _exp = 0;
-    _inv = [];
-
-    constructor() {
-        this._name = this._name[Math.floor(Math.random() * this._name.length)];
-        this._exp = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
-        this._inv = [new Weapon(), new Weapon(), new Weapon(),new Weapon(), new Weapon()];
-    }
-}
-
 let vendor = new Merchant();
-console.log(vendor);
+
+//input interface
+
+//display att hero
+let displayF = document.getElementById("force");
+let displayE = document.getElementById("endurance");
+let displayExp = document.getElementById("experience");
+let displayA = document.getElementById("argent");
+let displayHP = document.getElementById("vie");
+
+function Display() {
+    displayF.value = 0;
+    displayE.value = 0;
+    displayExp.value = 0;
+    displayA.value = 0;
+    displayHP.value = 0;
+
+    displayF.value =- displayF.value + Geralt.getDamage();
+    displayE.value =- displayE.value + Geralt.getEndurance();
+    displayExp.value =- displayExp.value + Geralt.getExp();
+    displayA.value =- displayA.value + Geralt.getGold();
+    displayHP.value =- displayHP.value + Geralt.getHP();
+
+    return displayF.value, displayE.value, displayExp.value, displayA.value, displayHP.value;
+}
+
+//button force endurance
+let power = document.getElementById("force+");
+let defense = document.getElementById("endurance+");
+let info = document.getElementById("info");
+
+Geralt.setGold(200);
+power.addEventListener("click", () => {
+    if(Geralt.getGold() >= 100) {
+        Geralt.setGold(- 100); 
+        Geralt.setDamage(+ 1);
+        info.innerText = "Vous avez obtenue plus un de force";
+        Display();
+    } else {
+        info.innerText = "Vous n'avez pas assez D'argent";
+    }
+})
+
+defense.addEventListener("click", () => {
+    if(Geralt.getGold() >= 100) {
+        Geralt.setGold(- 100);
+        Geralt.setEndurance(+ 1);
+        info.innerText = "Vous avez obtenue plus un de Endurance";
+        Display();
+    } else {
+        info.innerText = "Vous n'avez pas assez D'argent";
+    }
+})
+
+//button combat
+let avancer = document.getElementById("avancer");
+// info monstre ou marchand
+let merOrMons = document.getElementById("merOrMons");
+// interface marchand
+let merch = document.getElementById("merch");
+//interface monstre
+let monstre = document.getElementById("monstre");
+let forceM = document.getElementById("forceM");
+let enduranceM = document.getElementById("enduranceM");
+let nomMons = document.getElementById("nomMons")
+
+avancer.addEventListener("click", () => {
+
+    Display();
+    let number = 17;
+    let number1 = Math.floor(Math.random() * 19)+ 1;
+    info.innerText = "";
+
+    if(number1 >= number) {
+        merOrMons.innerText = "Vous rencontree un marchand";
+        avancer.classList.replace("d-block", "d-none");
+        merch.classList.replace("d-none", "d-block");
+    } else {
+        merOrMons.innerText = "Vous rencontree un monstre";
+        avancer.classList.replace("d-block", "d-none");
+        monstre.classList.replace("d-none", "d-block");
+        let enemie = new Monster();
+        nomMons.innerHTML = enemie.getName();
+        forceM.value = 0;
+        enduranceM.value = 0;
+        forceM.value = enemie.getDamage(); 
+        enduranceM.value = enemie.getEndurance();
+    }
+})
+
+let partir1 = document.getElementById("partir1");
+let partir = document.getElementById("partir");
+let MercInf = document.getElementById("MercInf");
+
+partir.addEventListener("click", () => {
+    merch.classList.replace("d-block", "d-none");
+    avancer.classList.replace("d-none", "d-block");
+    merOrMons.innerText = "";
+    MercInf.innerText = "";
+})
+
+partir1.addEventListener("click", () => {
+    monstre.classList.replace("d-block", "d-none");
+    avancer.classList.replace("d-none", "d-block");
+    merOrMons.innerText = "";
+})
+
+//marchand
+const selectM  = document.getElementById('selectM');
+const selectH = document.getElementById('selectH');
+let myParent = document.body;
+let key = "";
+
+for(key of vendor.getInv()) {
+
+    //console.log("outside", key, key.getId(), key.getName())
+
+    if(vendor.getInv().hasOwnProperty(key)) {
+        const inventory = vendor.getInv()[key];
+
+        let option = document.createElement("option");
+        option.text = key.getName();
+        option.value = key.getId();
+        select1.appendChild(option);
+        
+        //selectM.add( new Option (key.getName(), key.getId()));
+        //selectM.add(select1)
+    }
+}
+
+let select1 = document.createElement("select")
+select1.id = "mySelect";
+myParent.appendChild(select1);
+
+/*for(key of Geralt.getInv()) {
+    
+    if(Geralt.getInv().hasOwnProperty(key)) {
+        const inventory = Geralt.getInv[key]; 
+        selectH.add( new Option (inventory.getInv[key], inventory));
+    }
+}*/
+
+//document.getElementById("acheter").addEventListener("click", () => {
+
+//});
+
+
+selectM.addEventListener("change", () => {
+
+    let acheter = document.getElementById("acheter");
+
+    acheter.addEventListener("click", () => {        
+
+            if (Geralt._gold >= 1000) {
+                Geralt._inv.push(vendor._inv.splice(0,1));
+                Geralt._gold = Geralt._gold - 800;
+                console.log(Geralt._inv);
+                console.log(Geralt._gold);
+                //selectM.splice(0,1);
+                console.log(selectM);
+                MercInf.innerText = "produit acheter";
+            } else {
+                MercInf.innerText = "pas d'argent";
+            }
+                
+            /*case 1:
+                if (Geralt._gold >= 400) {
+                    Geralt._inv.push(vendor._inv.splice(1,1));
+                    Geralt._gold = Geralt._gold - 400;
+                    console.log(Geralt._inv);
+                    console.log(Geralt._gold);
+                    selectM.splice(1,1);
+                    console.log(selectM);
+                    MercInf.innerText = "produit acheter";
+                } else {
+                    MercInf.innerText = "pas d'argent";
+                }
+                break;
+            case 2:
+                if (Geralt._gold >= 650) {
+                    Geralt._inv.push(vendor._inv.splice(2,1));
+                    Geralt._gold = Geralt._gold - 650;
+                    console.log(Geralt._inv);
+                    console.log(Geralt._gold);
+                    selectM.splice(2,1);
+                    console.log(selectM);
+                    MercInf.innerText = "produit acheter";
+                } else {
+                    MercInf.innerText = "pas d'argent";
+                }
+                break;
+            case 3:
+                if (Geralt._gold >= 550) {
+                    Geralt._inv.push(vendor._inv.splice(3,1));
+                    Geralt._gold = Geralt._gold - 550;
+                    console.log(Geralt._inv);
+                    console.log(Geralt._gold);
+                    selectM.splice(3,1);
+                    console.log(selectM);
+                    MercInf.innerText = "produit acheter";
+                } else {
+                    MercInf.innerText = "pas d'argent";
+                }
+                break;
+            case 4:
+                if (Geralt._gold >= 1000) {
+                    Geralt._inv.push(vendor._inv.splice(4,1));
+                    Geralt._gold = Geralt._gold - 1000;
+                    console.log(Geralt._inv);
+                    console.log(Geralt._gold);
+                    selectM.splice(4,1);
+                    console.log(selectM);
+                    MercInf.innerText = "produit acheter";
+                } else {
+                    MercInf.innerText = "pas d'argent";
+                }
+                break;
+        }*/
+       
+    })
+})
+
+export {Geralt}
