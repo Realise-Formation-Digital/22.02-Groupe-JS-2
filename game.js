@@ -69,7 +69,7 @@ defense.addEventListener("click", () => {
     }
 })
 
-//button combat
+//button avancer
 let avancer = document.getElementById("avancer");
 // info monstre ou marchand
 let merOrMons = document.getElementById("merOrMons");
@@ -87,6 +87,8 @@ avancer.addEventListener("click", () => {
     let number = 17;
     let number1 = Math.floor(Math.random() * 19)+ 1;
     info.innerText = "";
+    let enemie = new Monster(heroe.getExp());
+    console.log(enemie);
 
     if(number1 >= number) {
         merOrMons.innerText = "Vous rencontree un marchand";
@@ -96,14 +98,41 @@ avancer.addEventListener("click", () => {
         merOrMons.innerText = "Vous rencontree un monstre";
         avancer.classList.replace("d-block", "d-none");
         monstre.classList.replace("d-none", "d-block");
-        let enemie = new Monster(heroe.getExp());
         nomMons.innerHTML = enemie.getName();
         forceM.value = 0;
         enduranceM.value = 0;
         forceM.value = enemie.getDamage(); 
         enduranceM.value = enemie.getEndurance();
+
+        let attaquer = document.getElementById("attaquer")
+        attaquer.addEventListener("click", () => {
+
+            merOrMons.innerText = "";
+            //console.log(sbir._name.img)
+            //changeImage(sbir._name.img)
+            //console.log(sbir.getName().img)
+            //changeImage(sbir.getName().img)
+
+            if (heroe.getDamage() >= enemie.getEndurance()) {
+                if(enemie.getInv() !== []){
+                    heroe.setInv(enemie.setInv())
+                }
+                heroe.setGold(enemie.getGold());
+                merOrMons.innerText = "Victoire";
+                console.log(heroe);
+            } else{
+
+                if (enemie.getDamage() < heroe.getEndurance())
+                {
+                    merOrMons.innerText = "Egalité";
+                } else {
+                    heroe.setHP()
+                    merOrMons.innerText = "Défaite";
+                }
+            }
+        })
     }
-})
+});
 
 let partir1 = document.getElementById("partir1");
 let partir = document.getElementById("partir");
@@ -114,12 +143,14 @@ partir.addEventListener("click", () => {
     avancer.classList.replace("d-none", "d-block");
     merOrMons.innerText = "";
     MercInf.innerText = "";
+    Display();
 })
 
 partir1.addEventListener("click", () => {
     monstre.classList.replace("d-block", "d-none");
     avancer.classList.replace("d-none", "d-block");
     merOrMons.innerText = "";
+    Display();
 })
 
 //marchand

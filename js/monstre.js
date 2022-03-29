@@ -28,7 +28,7 @@ class Monster {
 
         this._name = this._name[Math.floor(Math.random() * this._name.length)];
         this._exp = 1; 
-        this._inv.push(this.Bool(heroe));
+        this._inv.push(this.Bool());
         this.FairPlay(heroe);
     }
 
@@ -40,6 +40,10 @@ class Monster {
         return this._inv;
     }
 
+    setInv (){
+        this._inv.pop(this._inv);
+    }
+
     getDamage() {
         return this._dam;
     }
@@ -47,13 +51,13 @@ class Monster {
     getEndurance() {
         return this._end;
     }
-    
-    setInv (){
-        this._inv.pop(this._inv);
-    }
 
     getExp(){
         return this._exp;
+    }
+
+    getGold() {
+        return this._gold;
     }
 
     FairPlay(heroe) {
@@ -215,11 +219,14 @@ class Monster {
         return this._dam, this._end, this._gold;
     }
 
-    Bool(heroe) { 
+    Bool() { 
         let number = 10
         let number1 = Math.floor(Math.random() * 19)+ 1;
         
-        return number1 >= number ? new Weapon(heroe) : []  
+        if (number1 >= number) {
+            new Weapon();
+        }
+        return new Weapon();
     }
 }
 
