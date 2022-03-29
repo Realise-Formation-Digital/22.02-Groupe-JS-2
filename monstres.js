@@ -327,9 +327,6 @@ afas.addEventListener("click", () => {
 
 //  **************************Fuite********************************
 
-// function fuite () {
-
-// }
 
 
 // *****************Affichage block stats ennemi*********************
@@ -362,5 +359,8 @@ window.onload = setImage;
 
 
 // ***********************Quitter le résultat du combat et revenir à l'écran principal*****************
+
+
+
 
 
