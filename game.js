@@ -1,3 +1,4 @@
+
 import { Weapon } from "./js/weapon.js";  
 import { Hero } from "./js/hero.js";
 import { Monster } from "./js/monstre.js";
@@ -235,3 +236,5 @@ selectM.addEventListener("change", () => {
 })
 
 export {Geralt}
+
+import Arme from "./arme.js"
