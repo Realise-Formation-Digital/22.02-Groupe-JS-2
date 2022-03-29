@@ -1,5 +1,3 @@
-import {Geralt} from "/game.js"
-
 class Weapon {
 
     _id = 0;
@@ -23,19 +21,32 @@ class Weapon {
     _end = 0;
     _exp = 0;
 
-    constructor (name, dam, gold, end, exp) {
+    /**
+     * Constructor
+     * @param {Hero} heroe 
+     * @param {String} name 
+     * @param {Number} dam 
+     * @param {Number} gold 
+     * @param {Number} end 
+     * @param {Number} exp 
+     */
+    constructor (heroe = null, name = null, dam = null, gold = null, end = null, exp = null) {
         this._id = Weapon.UniqueID();
         this._name = name ? name : this._name[Math.floor(Math.random() * this._name.length)];
-        this._dam = dam ? dam : this.GoldPocket();
-        this._gold = gold ? gold : this.GoldPocket();
-        this._end = end ? end : this.GoldPocket();
-        this._exp = exp ? exp : this.EquipOrNot();
+        this._dam = dam ? dam : (heroe ? this.GoldPocket(heroe.getExp()) : 0);
+        this._gold = gold ? gold : (heroe ? this.GoldPocket(heroe.getExp()) : 0);
+        this._end = end ? end : (heroe ? this.GoldPocket(heroe.getExp()) : 0);
+        this._exp = exp ? exp : (heroe ? this.EquipOrNot(heroe.getExp()) : 0);
     }
 
     static UniqueID() {
         if (!this.lastId) this.lastId = 1
         else this.lastId++
         return this.lastId
+    }
+
+    getExp(){
+        return this._exp;
     }
 
     getDamage() {
@@ -50,34 +61,36 @@ class Weapon {
         return this._id
     }
 
-    getString() {
-        return this._name + ',' + ' ' +'gold: ' + this._gold + ',' + ' ' + 'dam: ' + this._dam + ',' + ' ' + 'end: ' + this._end + ',' + ' ' + 'exp: ' + this._exp;
-    };
+    /**
+     * 
+     * @param {*} heroe 
+     * @returns 
+     */
 
-    EquipOrNot() {
+    EquipOrNot(heroe) {
         let orNot = 10;
         let equip = Math.floor(Math.random() * 19)+ 1;
 
-        if (Geralt.getExp() <=5) {
-            this._exp = Math.floor(Math.random() * 3)+ 1;
+        if (heroe <= 5) {
+            this._exp = Math.floor(Math.random() * 2)+ 1;
         } else if (equip >= orNot) {
-            this._exp = Geralt._exp + 1 * [Math.floor(Math.random() * -2) - 1];
+            this._exp = heroe + 1 * [Math.floor(Math.random() * -2) - 1];
         } else {
-            this._exp = Geralt._exp + 1 * [Math.floor(Math.random() * 2) + 1];
+            this._exp = heroe + 1 * [Math.floor(Math.random() * 2) + 1];
         }
         return this._exp;
     }
 
-    GoldPocket(geraltExp) {
-        switch(geraltExp) {
+    GoldPocket(heroe) {
+        switch(heroe) {
             case 0 :
             case 1 :
             case 2 :
             case 3 :
             case 4 :
             case 5 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 2) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 2) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 2) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 2) + 1];
                 this._gold = Math.floor(Math.random() * 29) + 1;
                 break;
             case 6 :
@@ -85,8 +98,8 @@ class Weapon {
             case 8 :
             case 9 :
             case 10 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 3) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 3) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 3) + 1];
                 this._gold = Math.floor(Math.random() * (49 - 29 +1)) + 30;
                 break;
             case 11 :
@@ -99,8 +112,8 @@ class Weapon {
             case 18 :
             case 19 :
             case 20 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 4) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 4) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 4) + 1];
                 this._gold = Math.floor(Math.random() * (99 - 49 +1)) + 50;
                 break;
             case 21 :
@@ -113,8 +126,8 @@ class Weapon {
             case 28 :
             case 29 :
             case 30 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 5) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 5) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 5) + 1];
                 this._gold = Math.floor(Math.random() * (149 - 99 +1)) + 100;
                 break;
             case 31 :
@@ -127,8 +140,8 @@ class Weapon {
             case 38 :
             case 39 :
             case 40 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 6) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 6) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 6) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 6) + 1];
                 this._gold = Math.floor(Math.random() * (199 - 149 +1)) + 150;
                 break;
             case 41 :
@@ -141,8 +154,8 @@ class Weapon {
             case 48 :
             case 49 :
             case 50 :
-                this._end = Geralt._exp + 1 * [Math.floor(Math.random() * 7) + 1];
-                this._dam = Geralt._exp + 1 * [Math.floor(Math.random() * 7) + 1];
+                this._end = heroe + 1 * [Math.floor(Math.random() * 7) + 1];
+                this._dam = heroe + 1 * [Math.floor(Math.random() * 7) + 1];
                 this._gold = Math.floor(Math.random() * (249 - 199 +1)) + 200;
                 break;
         }
@@ -150,4 +163,4 @@ class Weapon {
     } 
 }
 
-export {Weapon};
+export { Weapon };

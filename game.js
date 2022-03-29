@@ -4,14 +4,18 @@ import { Monster } from "./js/monstre.js";
 import { Merchant } from "./js/merchant.js";
     
 // variables
-let Geralt = new Hero("Heroe");
-let sword = new Weapon("Sword", 1, 15, 0, 0, 0);
-Geralt.setInv(sword);
-Geralt.setDamage(sword.getDamage());
 
-console.log(Geralt);
+let heroe = new Hero("Heroe");
+let sword = new Weapon(null, "Sword", 1, 15, 0, 0, 0);
+heroe.setInv(sword);
+heroe.setDamage(sword.getDamage());
 
-let vendor = new Merchant();
+console.log(heroe);
+
+let listArmes = [new Weapon(null, "Excalibur", 60, 800, 55, heroe.getExp()),new Weapon(null, "Masamune", 40, 400, 30, heroe.getExp()),new Weapon(null, "Energy Sword", 50, 650, 30, heroe.getExp()),new Weapon(null, "Laser Saber", 45, 550, 45, heroe.getExp()), new Weapon(null, "Artemis", 75, 1000, 75, heroe.getExp())];
+let vendor = new Merchant(listArmes, heroe.getExp());
+console.log(vendor);
+console.log('les armes du vendeur', vendor.getInv());
 
 //input interface
 
@@ -29,11 +33,11 @@ function Display() {
     displayA.value = 0;
     displayHP.value = 0;
 
-    displayF.value =- displayF.value + Geralt.getDamage();
-    displayE.value =- displayE.value + Geralt.getEndurance();
-    displayExp.value =- displayExp.value + Geralt.getExp();
-    displayA.value =- displayA.value + Geralt.getGold();
-    displayHP.value =- displayHP.value + Geralt.getHP();
+    displayF.value =- displayF.value + heroe.getDamage();
+    displayE.value =- displayE.value + heroe.getEndurance();
+    displayExp.value =- displayExp.value + heroe.getExp();
+    displayA.value =- displayA.value + heroe.getGold();
+    displayHP.value =- displayHP.value + heroe.getHP();
 
     return displayF.value, displayE.value, displayExp.value, displayA.value, displayHP.value;
 }
@@ -43,11 +47,10 @@ let power = document.getElementById("force+");
 let defense = document.getElementById("endurance+");
 let info = document.getElementById("info");
 
-Geralt.setGold(200);
 power.addEventListener("click", () => {
-    if(Geralt.getGold() >= 100) {
-        Geralt.setGold(- 100); 
-        Geralt.setDamage(+ 1);
+    if(heroe.getGold() >= 100) {
+        heroe.setGold(- 100); 
+        heroe.setDamage(+ 1);
         info.innerText = "Vous avez obtenue plus un de force";
         Display();
     } else {
@@ -56,9 +59,9 @@ power.addEventListener("click", () => {
 })
 
 defense.addEventListener("click", () => {
-    if(Geralt.getGold() >= 100) {
-        Geralt.setGold(- 100);
-        Geralt.setEndurance(+ 1);
+    if(heroe.getGold() >= 100) {
+        heroe.setGold(- 100);
+        heroe.setEndurance(+ 1);
         info.innerText = "Vous avez obtenue plus un de Endurance";
         Display();
     } else {
@@ -93,7 +96,7 @@ avancer.addEventListener("click", () => {
         merOrMons.innerText = "Vous rencontree un monstre";
         avancer.classList.replace("d-block", "d-none");
         monstre.classList.replace("d-none", "d-block");
-        let enemie = new Monster();
+        let enemie = new Monster(heroe.getExp());
         nomMons.innerHTML = enemie.getName();
         forceM.value = 0;
         enduranceM.value = 0;
@@ -120,43 +123,43 @@ partir1.addEventListener("click", () => {
 })
 
 //marchand
-const selectM  = document.getElementById('selectM');
+
+/*const selectM  = document.getElementById('selectM');
 const selectH = document.getElementById('selectH');
 let myParent = document.body;
 let key = "";
 
 for(key of vendor.getInv()) {
 
-    //console.log("outside", key, key.getId(), key.getName())
+    console.log("outside", key, key.getId(), key.getName())
 
     if(vendor.getInv().hasOwnProperty(key)) {
         const inventory = vendor.getInv()[key];
 
-        let option = document.createElement("option");
+        let buttons = document.createElement("button");
         option.text = key.getName();
         option.value = key.getId();
-        select1.appendChild(option);
+        selectM.appendChild(option);
         
-        //selectM.add( new Option (key.getName(), key.getId()));
-        //selectM.add(select1)
+        selectM.add( new Option (key.getName(), key.getId()));
     }
 }
 
-let select1 = document.createElement("select")
+let buttons = document.createElement("select")
 select1.id = "mySelect";
 myParent.appendChild(select1);
 
-/*for(key of Geralt.getInv()) {
+for(key of heroe.getInv()) {
     
-    if(Geralt.getInv().hasOwnProperty(key)) {
-        const inventory = Geralt.getInv[key]; 
+    if(heroe.getInv().hasOwnProperty(key)) {
+        const inventory = heroe.getInv[key]; 
         selectH.add( new Option (inventory.getInv[key], inventory));
     }
-}*/
+}
 
-//document.getElementById("acheter").addEventListener("click", () => {
+document.getElementById("acheter").addEventListener("click", () => {
 
-//});
+});
 
 
 selectM.addEventListener("change", () => {
@@ -165,11 +168,11 @@ selectM.addEventListener("change", () => {
 
     acheter.addEventListener("click", () => {        
 
-            if (Geralt._gold >= 1000) {
-                Geralt._inv.push(vendor._inv.splice(0,1));
-                Geralt._gold = Geralt._gold - 800;
-                console.log(Geralt._inv);
-                console.log(Geralt._gold);
+            if (heroe._gold >= 1000) {
+                heroe._inv.push(vendor._inv.splice(0,1));
+                heroe._gold = heroe._gold - 800;
+                console.log(heroe._inv);
+                console.log(heroe._gold);
                 //selectM.splice(0,1);
                 console.log(selectM);
                 MercInf.innerText = "produit acheter";
@@ -177,12 +180,12 @@ selectM.addEventListener("change", () => {
                 MercInf.innerText = "pas d'argent";
             }
                 
-            /*case 1:
-                if (Geralt._gold >= 400) {
-                    Geralt._inv.push(vendor._inv.splice(1,1));
-                    Geralt._gold = Geralt._gold - 400;
-                    console.log(Geralt._inv);
-                    console.log(Geralt._gold);
+            case 1:
+                if (heroe._gold >= 400) {
+                    heroe._inv.push(vendor._inv.splice(1,1));
+                    heroe._gold = heroe._gold - 400;
+                    console.log(heroe._inv);
+                    console.log(heroe._gold);
                     selectM.splice(1,1);
                     console.log(selectM);
                     MercInf.innerText = "produit acheter";
@@ -191,11 +194,11 @@ selectM.addEventListener("change", () => {
                 }
                 break;
             case 2:
-                if (Geralt._gold >= 650) {
-                    Geralt._inv.push(vendor._inv.splice(2,1));
-                    Geralt._gold = Geralt._gold - 650;
-                    console.log(Geralt._inv);
-                    console.log(Geralt._gold);
+                if (heroe._gold >= 650) {
+                    heroe._inv.push(vendor._inv.splice(2,1));
+                    heroe._gold = heroe._gold - 650;
+                    console.log(heroe._inv);
+                    console.log(heroe._gold);
                     selectM.splice(2,1);
                     console.log(selectM);
                     MercInf.innerText = "produit acheter";
@@ -204,11 +207,11 @@ selectM.addEventListener("change", () => {
                 }
                 break;
             case 3:
-                if (Geralt._gold >= 550) {
-                    Geralt._inv.push(vendor._inv.splice(3,1));
-                    Geralt._gold = Geralt._gold - 550;
-                    console.log(Geralt._inv);
-                    console.log(Geralt._gold);
+                if (heroe._gold >= 550) {
+                    heroe._inv.push(vendor._inv.splice(3,1));
+                    heroe._gold = heroe._gold - 550;
+                    console.log(heroe._inv);
+                    console.log(heroe._gold);
                     selectM.splice(3,1);
                     console.log(selectM);
                     MercInf.innerText = "produit acheter";
@@ -217,11 +220,11 @@ selectM.addEventListener("change", () => {
                 }
                 break;
             case 4:
-                if (Geralt._gold >= 1000) {
-                    Geralt._inv.push(vendor._inv.splice(4,1));
-                    Geralt._gold = Geralt._gold - 1000;
-                    console.log(Geralt._inv);
-                    console.log(Geralt._gold);
+                if (heroe._gold >= 1000) {
+                    heroe._inv.push(vendor._inv.splice(4,1));
+                    heroe._gold = heroe._gold - 1000;
+                    console.log(heroe._inv);
+                    console.log(heroe._gold);
                     selectM.splice(4,1);
                     console.log(selectM);
                     MercInf.innerText = "produit acheter";
@@ -229,9 +232,7 @@ selectM.addEventListener("change", () => {
                     MercInf.innerText = "pas d'argent";
                 }
                 break;
-        }*/
+        }
        
     })
-})
-
-export {Geralt}
+})*/

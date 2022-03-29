@@ -36,8 +36,8 @@ class Hero {
         return this._exp;
     }
 
-    setExp() {
-        this._exp = this._exp + 1;
+    setExp(newvalue) {
+        this._exp = this._exp + newvalue;
     }
 
     getGold() {
@@ -65,4 +65,4 @@ class Hero {
     }
 }
 
-export {Hero};
+export { Hero };
