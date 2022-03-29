@@ -331,20 +331,21 @@ afas.addEventListener("click", () => {
 
 
 let partir1 = document.getElementById("partir1");
-let partir = document.getElementById("partir");
-let MercInf = document.getElementById("MercInf");
+// let partir = document.getElementById("partir");
+// let MercInf = document.getElementById("MercInf");
 
-partir.addEventListener("click", () => {
-    merch.classList.replace("d-block", "d-none");
-    avancer.classList.replace("d-none", "d-block");
-    merOrMons.innerText = "";
-    MercInf.innerText = "";
-})
+// partir.addEventListener("click", () => {
+//     merch.classList.replace("d-block", "d-none");
+//     avancer.classList.replace("d-none", "d-block");
+//     merOrMons.innerText = "";
+//     MercInf.innerText = "";
+// })
 
 partir1.addEventListener("click", () => {
     monstre.classList.replace("d-block", "d-none");
     avancer.classList.replace("d-none", "d-block");
     merOrMons.innerText = "";
+    
 })
 
 
