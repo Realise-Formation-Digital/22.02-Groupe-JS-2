@@ -264,6 +264,10 @@ class Monster {
         this._exp = 1;
         this._inv = [arme];
     }
+
+    getName(){
+        return this._name
+    }
 }
 let sbir = new Monster();
 console.log(sbir)
@@ -297,39 +301,39 @@ let prof = new WorldBoss();
 console.log(prof)
 // ============================================= //
 
- let afas = document.getElementById("Bcombat");
+ let afas = document.getElementById("combat");
  
 afas.addEventListener("click", () => {
 //  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!!!!!!!!!!!!!!LES LIGNES CONSOLE.LOG ET changeImage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let alerte = "";
-    console.log(sbir._name.img)
-    changeImage(sbir._name.img)
+    console.log(sbir.getName().img)
+    changeImage(sbir.getName().img)
     if (Geralt._dam >= sbir._end) {
         Geralt._inv.push(sbir._inv.pop())
         Geralt._gold = Geralt._gold + sbir._gold;
         sbir._gold = 0;
         delete sbir
-        alerte = "Tu as gagné"
+        alerte = "Victoire"
     } else{
 
         if (sbir._dam < Geralt._end){
-            alerte = "MATCH NUL"
+            alerte = "Egalité"
         } else if (sbir._dam >= Geralt._end){
             Geralt._hp = Geralt._hp - 1
-            alerte = "tu es nul"
+            alerte = "Défaite"
         } else {
-            alerte = "fini";
+            alerte = "Fin";
         }
     }
 
 
     
-    console.log(alerte, sbir);
+    console.log(alerte, sbir.getName());
     return alerte;
  });
 
 
-//  **************************Fuite********************************
+//  !!!!!!!!!!!! LOIC !!!!!!!!!!! AJOUTER LES 3 DERNIERES LIGNES DANS TON CODE (PARTIR 1)!!!!!!!!!!!!!!!! 
 
 
 let partir1 = document.getElementById("partir1");
@@ -344,24 +348,28 @@ let partir1 = document.getElementById("partir1");
 // })
 
 partir1.addEventListener("click", () => {
-    // monstre.classList.replace("d-block", "d-none");
-    // avancer.classList.replace("d-none", "d-block");
-    // merOrMons.innerText = "";
+//     monstre.classList.replace("d-block", "d-none");
+//     avancer.classList.replace("d-none", "d-block");
+//     merOrMons.innerText = "";
+menuEnnemi.style.visibility = "hidden";
+console.log('img/landscape.jpg')
+changeImage('img/landscape.jpg')
 })
 
 
 
 
-// !!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!Affichage block stats ennemi!!!!!ATTENTION NON FONCTIONNEL!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!Affichage block stats ennemi!!!!!!!!!!!!!!!!!!!!!!!!
 
-function Bcombat() {
-    let statennemi = document.getElementById('menuEnnemi');
-    if (statennemi.style.display === 'none') {
-        statennemi.style.display = 'block';
-    } else {
-        statennemi.style.display = 'block';
-    }
-}
+
+let combat = document.getElementById('combat')
+let menuEnnemi = document.getElementById('menuEnnemi')
+
+combat.addEventListener('click', () => {
+        menuEnnemi.style.visibility = "visible";
+    })
+    
+
 
 // **************** Changement de fond d'ecran selon personnage rencontré ***************
 
@@ -379,7 +387,10 @@ function setImage() {
 window.onload = setImage;
 
 
-// *******************Affichage du résultat du combat*************************
+// !!!!!!!!!!!!!!! LOIC !!!!!!!!!!!!!!!!! Affichage du nom du monstre !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+let nomEnnemi = document.getElementById('nomEnnemi');
+nomEnnemi.innerHTML = sbir.getName();
 
 
 

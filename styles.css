@@ -38,3 +38,12 @@
 .menu-espace {
     justify-content: space-between;
 }
+
+#menuEnnemi {
+    visibility: hidden;
+}
+
+#menuUpgrade {
+    display:flex;
+    justify-content: end;
+}
