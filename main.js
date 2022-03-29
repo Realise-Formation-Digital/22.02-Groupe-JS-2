@@ -1,4 +1,5 @@
 
+import Weapon from "./monster";
 // *****************Affichage block stats ennemi*********************
 
 function essai() {

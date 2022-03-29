@@ -1,3 +1,6 @@
+
+// import Weapon from "./weapon.js"
+
 class Hero {
 
     _name 
@@ -185,7 +188,6 @@ console.log(arme2);
 class Monster {
 
     _name = 
-    // Ca va ouuuuuuu? -----------------------------------Object.name-------------????????????
     // [
     //     "Balrog",
     //     "Orc",
@@ -204,7 +206,7 @@ class Monster {
     // ]
 
 
-    //  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!!!!!!!!!REMPLACE LA LISTE DU HAUT PAR CELLE-LA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!CLASSE MONSTER.JS!!!!!!!!!!!REMPLACE LA LISTE PAR CELLE-LA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 [
 {
@@ -342,16 +344,15 @@ let partir1 = document.getElementById("partir1");
 // })
 
 partir1.addEventListener("click", () => {
-    monstre.classList.replace("d-block", "d-none");
-    avancer.classList.replace("d-none", "d-block");
-    merOrMons.innerText = "";
-    
+    // monstre.classList.replace("d-block", "d-none");
+    // avancer.classList.replace("d-none", "d-block");
+    // merOrMons.innerText = "";
 })
 
 
 
 
-// *****************Affichage block stats ennemi*********************
+// !!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!Affichage block stats ennemi!!!!!ATTENTION NON FONCTIONNEL!!!!!!!!!!!!!!!!!!!
 
 function Bcombat() {
     let statennemi = document.getElementById('menuEnnemi');
