@@ -204,6 +204,8 @@ class Monster {
     // ]
 
 
+    //  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!!!!!!!!!REMPLACE LA LISTE DU HAUT PAR CELLE-LA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 [
 {
     name: "Balrog",
@@ -296,7 +298,7 @@ console.log(prof)
  let afas = document.getElementById("Bcombat");
  
 afas.addEventListener("click", () => {
-
+//  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!!!!!!!!!!!!!!LES LIGNES CONSOLE.LOG ET changeImage!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     let alerte = "";
     console.log(sbir._name.img)
     changeImage(sbir._name.img)
@@ -328,6 +330,25 @@ afas.addEventListener("click", () => {
 //  **************************Fuite********************************
 
 
+let partir1 = document.getElementById("partir1");
+let partir = document.getElementById("partir");
+let MercInf = document.getElementById("MercInf");
+
+partir.addEventListener("click", () => {
+    merch.classList.replace("d-block", "d-none");
+    avancer.classList.replace("d-none", "d-block");
+    merOrMons.innerText = "";
+    MercInf.innerText = "";
+})
+
+partir1.addEventListener("click", () => {
+    monstre.classList.replace("d-block", "d-none");
+    avancer.classList.replace("d-none", "d-block");
+    merOrMons.innerText = "";
+})
+
+
+
 
 // *****************Affichage block stats ennemi*********************
 
@@ -342,6 +363,8 @@ function Bcombat() {
 
 // **************** Changement de fond d'ecran selon personnage rencontré ***************
 
+
+//  !!!!!!!!!!!!!LOIC C'EST POUR TOI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function changeImage(imgPath) {
     document.body.background = imgPath;
